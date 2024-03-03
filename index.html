@@ -31,50 +31,40 @@
     </form>
   </div>
 
-  <script>
-    // Replace these placeholders with your actual Firebase app configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyChYZonbAo_mHJiIEB3UnBniq1-VdIiQJk",
-  authDomain: "contact-test1.firebaseapp.com",
-  databaseURL: "https://contact-test1-default-rtdb.firebaseio.com",
-  projectId: "contact-test1",
-  storageBucket: "contact-test1.appspot.com",
-  messagingSenderId: "742584109654",
-  appId: "1:742584109654:web:19271a62231595b48349f7"
-};
-
-    firebase.initializeApp(firebaseConfig);
-    const database = firebase.database();
-
-    // Event listener for form submission
-    const form = document.getElementById("contactForm");
-    form.addEventListener("submit", handleSubmit);
-
-    function handleSubmit(event) {
-      event.preventDefault(); // Prevent default form submission
-
-      const name = document.getElementById("name").value;
-      const email = document.getElementById("email").value;
-      const message = document.getElementById("message").value;
-
-      saveMessages(name, email, message);
-    }
-
-    function saveMessages(name, email, message) {
-      database.ref("messages").push({
-        name: name,
-        email: email,
-        message: message
-      })
-      .then(() => {
-        console.log("Message sent successfully!");
-        form.reset(); // Clear the form after successful submission
-      })
-      .catch((error) => {
-        console.error("Error sending message:", error);
-        // Optional error handling (e.g., display an error message to the user)
-      });
-    }
+  <script type="module">
+    
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyAFgS7aXF5ibDz5imwGIrak-MJRhAQVL7I",
+          authDomain: "create-form-9732e.firebaseapp.com",
+          projectId: "create-form-9732e",
+          storageBucket: "create-form-9732e.appspot.com",
+          messagingSenderId: "208466921045",
+          appId: "1:208466921045:web:b8afe0a6924314212db6dc"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+      //get ref to database services.
+      const db = getDatabase(app);
+      
+      document.getElementById("submit").addEventListener('click', function(e){
+        e.preentDefault();
+        set(ref(db, 'user/' + document.gtElementById("usrname")).value),
+          {
+            username: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+                  alert(message?: any): void
+          }};
+            alert("Login Successfull   !");
+      })    
   </script>
 
 </body>
